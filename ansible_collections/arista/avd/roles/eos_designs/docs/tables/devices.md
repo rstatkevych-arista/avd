@@ -13,12 +13,13 @@
     | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;parent_profile</samp>](## "device_profiles.[].parent_profile") | String |  |  |  | Inherit settings from a parent profile defined under `device_profiles`.<br>Max two levels of profile inheritance: device -> profile -> parent_profile |
     | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;type</samp>](## "device_profiles.[].type") | String |  |  |  | Set the type of the device as defined under `node_type_keys`.<br>This takes precedence over the global `type` key. |
     | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;mlag_group</samp>](## "device_profiles.[].mlag_group") | String |  |  |  | Name of MLAG group. Exactly two devices must share the same mlag_group.<br>The group is used for creating MLAG Pairs, for port-channel descriptions on peers and for MLAG domain-id (unless mlag_domain_id is set). |
+    | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;dns_settings_profile</samp>](## "device_profiles.[].dns_settings_profile") | String |  |  |  | Reference to a defined DNS settings profile. It allows reusing DNS settings across multiple devices. |
     | [<samp>devices</samp>](## "devices") | List, items: Dictionary |  |  |  | PREVIEW - This datamodel is still under development and may change or get removed at any time. |
     | [<samp>&nbsp;&nbsp;-&nbsp;profile</samp>](## "devices.[].profile") | String |  |  |  | Inherit settings from a profile defined under `device_profiles`.<br>Max two levels of profile inheritance: device -> profile -> parent_profile<br>This takes precedence over the global `device_profile` key. |
     | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;type</samp>](## "devices.[].type") | String |  |  |  | Set the type of the device as defined under `node_type_keys`.<br>This takes precedence over the global `type` key. |
     | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;mlag_group</samp>](## "devices.[].mlag_group") | String |  |  |  | Name of MLAG group. Exactly two devices must share the same mlag_group.<br>The group is used for creating MLAG Pairs, for port-channel descriptions on peers and for MLAG domain-id (unless mlag_domain_id is set). |
-    | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;management_profile</samp>](## "devices.[].management_profile") | String |  |  |  | Reference to a defined management profile. It allows to reuse different device configuration snippets for multiple devices |
     | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;name</samp>](## "devices.[].name") | String | Required, Unique |  |  | The Node Name is used as "hostname". |
+    | [<samp>&nbsp;&nbsp;&nbsp;&nbsp;dns_settings_profile</samp>](## "devices.[].dns_settings_profile") | String |  |  |  | Reference to a defined DNS settings profile. It allows reusing DNS settings across multiple devices. |
 
 === "YAML"
 
@@ -47,6 +48,9 @@
         # The group is used for creating MLAG Pairs, for port-channel descriptions on peers and for MLAG domain-id (unless mlag_domain_id is set).
         mlag_group: <str>
 
+        # Reference to a defined DNS settings profile. It allows reusing DNS settings across multiple devices.
+        dns_settings_profile: <str>
+
     # PREVIEW - This datamodel is still under development and may change or get removed at any time.
     devices:
 
@@ -63,9 +67,9 @@
         # The group is used for creating MLAG Pairs, for port-channel descriptions on peers and for MLAG domain-id (unless mlag_domain_id is set).
         mlag_group: <str>
 
-        # Reference to a defined management profile. It allows to reuse different device configuration snippets for multiple devices
-        management_profile: <str>
-
         # The Node Name is used as "hostname".
         name: <str; required; unique>
+
+        # Reference to a defined DNS settings profile. It allows reusing DNS settings across multiple devices.
+        dns_settings_profile: <str>
     ```

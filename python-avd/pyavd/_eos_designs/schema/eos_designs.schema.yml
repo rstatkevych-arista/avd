@@ -2286,13 +2286,6 @@ keys:
 
             The group is used for creating MLAG Pairs, for port-channel descriptions
             on peers and for MLAG domain-id (unless mlag_domain_id is set).'
-        management_profile:
-          type: str
-          profile_selector:
-            catalog: management_profiles
-            target: .
-          description: Reference to a defined management profile. It allows to reuse
-            different device configuration snippets for multiple devices
   digital_twin:
     documentation_options:
       table: digital-twin-configuration
@@ -2355,13 +2348,6 @@ keys:
         default: false
         description: In Digital Twin mode, AVD can either use the default interfaces
           of the original or the digital twin platform (as set in `platform_settings.[].digital_twin.platform`).
-  dns_settings_profile:
-    type: str
-    profile_selector:
-      catalog: dns_settings_profiles
-      target: dns_settings
-    description: Reference to a defined DNS settings profile. It allows reusing DNS
-      settings across multiple devices.
   dns_settings:
     type: dict
     description: DNS settings
@@ -15141,6 +15127,13 @@ $defs:
 
               Validation profiles define requirements (e.g., hardware and logging)
               used by the `anta_runner` role during post-deployment validation.'
+          dns_settings_profile:
+            type: str
+            profile_selector:
+              catalog: dns_settings_profiles
+              target: inputs.dns_settings
+            description: Reference to a defined DNS settings profile. It allows reusing
+              DNS settings across multiple devices.
       node_groups:
         type: list
         description: Define variables related to all nodes part of this group.

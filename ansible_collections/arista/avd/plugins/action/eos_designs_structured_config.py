@@ -30,6 +30,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from collections.abc import MutableMapping
 
     from pyavd._eos_designs.structured_config import get_structured_config
+    from pyavd._schema.models.avd_profile import AvdProfileResolver
     from pyavd._schema.avdschema import AvdSchema
     from pyavd._utils import merge, strip_null_from_data
     from pyavd._utils import template as templater
@@ -37,6 +38,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 try:
     from pyavd._eos_designs.structured_config import get_structured_config
+    from pyavd._schema.models.avd_profile import AvdProfileResolver
     from pyavd._schema.avdschema import AvdSchema
     from pyavd._utils import merge, strip_null_from_data
     from pyavd._utils import template as templater
@@ -78,6 +80,7 @@ class ActionModule(AVDActionPlugin):
         self.templar = get_templar(self, task_vars)
 
         consolidated_inputs, host_hostvars = self.load_validated_inputs(hostname)
+        consolidated_inputs = AvdProfileResolver(host_hostvars, ConsolidatedAVDDesign)._apply_profiles(consolidated_inputs)
 
         all_facts = self.load_facts(hostname)
 

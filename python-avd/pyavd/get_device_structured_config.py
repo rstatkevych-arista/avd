@@ -46,10 +46,9 @@ def get_device_structured_config(
 
     # Normalize to ConsolidatedAVDDesign
     consolidated_inputs = ConsolidatedAVDDesign._from_avd_design(hostname, inputs)
-    profile_resolver = AvdProfileResolver()
     profile_data = inputs if isinstance(inputs, Mapping) else consolidated_inputs._dump()
-    profiles = profile_resolver._detect_profile_refs(type(consolidated_inputs), profile_data)
-    consolidated_inputs = profile_resolver._apply_profiles(consolidated_inputs, profiles)
+    profile_resolver = AvdProfileResolver(inputs, ConsolidatedAVDDesign)
+    consolidated_inputs = profile_resolver._apply_profiles(consolidated_inputs)
 
     return get_structured_config(
         hostname=hostname,

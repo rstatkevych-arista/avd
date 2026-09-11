@@ -32,10 +32,3 @@ keys:
           description: |-
             Name of MLAG group. Exactly two devices must share the same mlag_group.
             The group is used for creating MLAG Pairs, for port-channel descriptions on peers and for MLAG domain-id (unless mlag_domain_id is set).
-        management_profile:
-          type: str
-          profile_selector:
-            catalog: management_profiles
-            target: .
-          description: |-
-            Reference to a defined management profile. It allows to reuse different device configuration snippets for multiple devices

@@ -50,10 +50,6 @@ class EosDesignsRootModel(AvdModel):
             msg = f"Expecting 'data' as a 'Mapping' when loading data into '{cls.__name__}'. Got '{type(data)}"
             raise TypeError(msg)
 
-        return cls._from_dict_internal(data, load_custom_structured_config=load_custom_structured_config)
-
-    @classmethod
-    def _from_dict_internal(cls, data: Mapping, load_custom_structured_config: bool = True) -> Self:
         root_data = {"_dynamic_keys": cls._get_dynamic_keys(data)}
         if load_custom_structured_config:
             root_data["_custom_structured_configurations"] = cls._CustomStructuredConfigurations(cls._get_csc_items(data))

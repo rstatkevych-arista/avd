@@ -36,5 +36,8 @@ def init_store() -> None:
     TODO: Init from fragments when running from source.
     """
     from pyavd_utils.validation import init_store_from_file  # noqa: PLC0415
-
-    init_store_from_file(SCHEMA_STORE_GZ_FILE)
+    try:
+        init_store_from_file(SCHEMA_STORE_GZ_FILE)
+    except Exception as e:
+        print(f"did it happen here? {e}")
+        raise

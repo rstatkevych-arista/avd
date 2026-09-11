@@ -1827,6 +1827,14 @@ $defs:
               Name of the validation profile to apply to this device.
               The profile must be defined under `validation_profiles`.
               Validation profiles define requirements (e.g., hardware and logging) used by the `anta_runner` role during post-deployment validation.
+          dns_settings_profile:  
+            type: str
+            profile_selector:
+              catalog: dns_settings_profiles
+              target: inputs.dns_settings
+            description: |-
+              Reference to a defined DNS settings profile. It allows reusing DNS settings across multiple devices.
+      
       node_groups:
         type: list
         description: Define variables related to all nodes part of this group.

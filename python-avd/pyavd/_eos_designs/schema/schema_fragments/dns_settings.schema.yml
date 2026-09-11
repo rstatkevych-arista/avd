@@ -6,13 +6,6 @@
 # Use Ctrl + Space to get suggestions for every field. Autocomplete will pop up after typing 2 letters.
 type: dict
 keys:
-  dns_settings_profile:
-    type: str
-    profile_selector:
-      catalog: dns_settings_profiles
-      target: dns_settings
-    description: |-
-      Reference to a defined DNS settings profile. It allows reusing DNS settings across multiple devices.
   dns_settings:
     type: dict
     description: |-

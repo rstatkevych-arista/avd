@@ -41,7 +41,6 @@ def _get_relative_metaschema_path(schema_file: Path) -> str:
     schema_dir = schema_file.parent
     return relpath(METASCHEMA_FILE, schema_dir).replace("\\", "/")
 
-
 def combine_schemas() -> None:
     """
     Combine all schema fragments into a single YAML file.
