@@ -1,0 +1,12 @@
+---
+# Test for mgmt_interface_settings without lldp (covers the empty-dict gate
+# in management_interface.py that skips the lldp block when not set) and
+# with ipv6_mgmt_ip on the node.
+type: l2leaf
+l2leaf:
+  nodes:
+    - name: mgmt-interface-settings-4
+mgmt_interface_settings:
+  interface: Management0
+  # In this case, if not set explicitly, the config won't generate for management interface.
+  shutdown: false
